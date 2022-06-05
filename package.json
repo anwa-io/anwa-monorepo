@@ -1,0 +1,16 @@
+{
+  "name": "anwa-monorepo",
+  "version": "1.0.0",
+  "description": "Anwa Monorepo",
+  "repository": "https://github.com/anwa-io/anwa-monorepo",
+  "author": "Maksym Naboka",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "husky": "^8.0.1",
+    "lerna": "^5.0.0"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}

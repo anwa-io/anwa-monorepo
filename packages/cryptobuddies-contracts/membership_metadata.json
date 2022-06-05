@@ -1,0 +1,21 @@
+{
+  "description": "Crypto Buddies is a customizable NFT collectio made by anwa.io team. The collection is using Composable NFT technology and allows changing the accessoties dynamically. This membership is made excusivly for NFT.NYC 2022 and it provides the benefits to the holder. The benefits will be determinted closer to the public mint date.",
+  "external_url": "https://anwa.io/cryptobuddies",
+  "image": "https://gateway.pinata.cloud/ipfs/QmSrAU3yyE4CWncaeiC17hfDGsCHt8gK8B7ApuXeDHnymd",
+  "name": "Crypto Buddies Membership",
+  "attributes": [
+    {
+      "trait_type": "Event",
+      "value": "NFT.NYC2022"
+    },
+    {
+      "trait_type": "Type",
+      "value": "Membership"
+    },
+    {
+      "display_type": "date",
+      "trait_type": "Expires",
+      "value": 1687136400
+    }
+  ]
+}

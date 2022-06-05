@@ -13,19 +13,19 @@ async function main() {
   // manually to make sure everything is compiled
   // await hre.run('compile');
 
-  if (process.env.CRYPTO_BUDDIES_MINT_PASS == "true") {
-    console.log("Deploying CryptoBuddiesMintPass");
-    const CryptoBuddiesMintPass = await ethers.getContractFactory(
-      "CryptoBuddiesMintPass"
+  if (process.env.CRYPTO_BUDDIES_MEMBERSHIP == "true") {
+    console.log("Deploying CryptoBuddiesMembership");
+    const CryptoBuddiesMembership = await ethers.getContractFactory(
+      "CryptoBuddiesMembership"
     );
-    const mintPass = await CryptoBuddiesMintPass.deploy(
-      process.env.CRYPTO_BUDDIES_MINT_PASS_REDEEMABLE_ADDRESS,
-      process.env.CRYPTO_BUDDIES_MINT_PASS_IMAGE
+    const membership = await CryptoBuddiesMembership.deploy(
+      process.env.CRYPTO_BUDDIES_MEMBERSHIP_REDEEMABLE_ADDRESS,
+      process.env.CRYPTO_BUDDIES_MEMBERSHIP_IMAGE
     );
 
-    await mintPass.deployed();
+    await membership.deployed();
 
-    console.log("CryptoBuddiesMintPass deployed to:", mintPass.address);
+    console.log("CryptoBuddiesMembership deployed to:", membership.address);
   }
 }
 
