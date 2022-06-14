@@ -5,9 +5,9 @@
 import { Contract, Signer, utils } from "ethers";
 import type { Provider } from "@ethersproject/providers";
 import type {
-  ERC721URIStorage,
-  ERC721URIStorageInterface,
-} from "../../../../../../@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage";
+  ERC1155Supply,
+  ERC1155SupplyInterface,
+} from "../../../../../../@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Supply";
 
 const _abi = [
   {
@@ -16,32 +16,7 @@ const _abi = [
       {
         indexed: true,
         internalType: "address",
-        name: "owner",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "approved",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "uint256",
-        name: "tokenId",
-        type: "uint256",
-      },
-    ],
-    name: "Approval",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "owner",
+        name: "account",
         type: "address",
       },
       {
@@ -66,6 +41,12 @@ const _abi = [
       {
         indexed: true,
         internalType: "address",
+        name: "operator",
+        type: "address",
+      },
+      {
+        indexed: true,
+        internalType: "address",
         name: "from",
         type: "address",
       },
@@ -76,39 +57,88 @@ const _abi = [
         type: "address",
       },
       {
+        indexed: false,
+        internalType: "uint256[]",
+        name: "ids",
+        type: "uint256[]",
+      },
+      {
+        indexed: false,
+        internalType: "uint256[]",
+        name: "values",
+        type: "uint256[]",
+      },
+    ],
+    name: "TransferBatch",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
         indexed: true,
+        internalType: "address",
+        name: "operator",
+        type: "address",
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "from",
+        type: "address",
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "to",
+        type: "address",
+      },
+      {
+        indexed: false,
         internalType: "uint256",
-        name: "tokenId",
+        name: "id",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "value",
         type: "uint256",
       },
     ],
-    name: "Transfer",
+    name: "TransferSingle",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "string",
+        name: "value",
+        type: "string",
+      },
+      {
+        indexed: true,
+        internalType: "uint256",
+        name: "id",
+        type: "uint256",
+      },
+    ],
+    name: "URI",
     type: "event",
   },
   {
     inputs: [
       {
         internalType: "address",
-        name: "to",
+        name: "account",
         type: "address",
       },
       {
         internalType: "uint256",
-        name: "tokenId",
+        name: "id",
         type: "uint256",
-      },
-    ],
-    name: "approve",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "owner",
-        type: "address",
       },
     ],
     name: "balanceOf",
@@ -125,17 +155,41 @@ const _abi = [
   {
     inputs: [
       {
+        internalType: "address[]",
+        name: "accounts",
+        type: "address[]",
+      },
+      {
+        internalType: "uint256[]",
+        name: "ids",
+        type: "uint256[]",
+      },
+    ],
+    name: "balanceOfBatch",
+    outputs: [
+      {
+        internalType: "uint256[]",
+        name: "",
+        type: "uint256[]",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
         internalType: "uint256",
-        name: "tokenId",
+        name: "id",
         type: "uint256",
       },
     ],
-    name: "getApproved",
+    name: "exists",
     outputs: [
       {
-        internalType: "address",
+        internalType: "bool",
         name: "",
-        type: "address",
+        type: "bool",
       },
     ],
     stateMutability: "view",
@@ -145,7 +199,7 @@ const _abi = [
     inputs: [
       {
         internalType: "address",
-        name: "owner",
+        name: "account",
         type: "address",
       },
       {
@@ -166,38 +220,6 @@ const _abi = [
     type: "function",
   },
   {
-    inputs: [],
-    name: "name",
-    outputs: [
-      {
-        internalType: "string",
-        name: "",
-        type: "string",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "tokenId",
-        type: "uint256",
-      },
-    ],
-    name: "ownerOf",
-    outputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
     inputs: [
       {
         internalType: "address",
@@ -210,12 +232,22 @@ const _abi = [
         type: "address",
       },
       {
-        internalType: "uint256",
-        name: "tokenId",
-        type: "uint256",
+        internalType: "uint256[]",
+        name: "ids",
+        type: "uint256[]",
+      },
+      {
+        internalType: "uint256[]",
+        name: "amounts",
+        type: "uint256[]",
+      },
+      {
+        internalType: "bytes",
+        name: "data",
+        type: "bytes",
       },
     ],
-    name: "safeTransferFrom",
+    name: "safeBatchTransferFrom",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -234,12 +266,17 @@ const _abi = [
       },
       {
         internalType: "uint256",
-        name: "tokenId",
+        name: "id",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
         type: "uint256",
       },
       {
         internalType: "bytes",
-        name: "_data",
+        name: "data",
         type: "bytes",
       },
     ],
@@ -286,13 +323,19 @@ const _abi = [
     type: "function",
   },
   {
-    inputs: [],
-    name: "symbol",
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "id",
+        type: "uint256",
+      },
+    ],
+    name: "totalSupply",
     outputs: [
       {
-        internalType: "string",
+        internalType: "uint256",
         name: "",
-        type: "string",
+        type: "uint256",
       },
     ],
     stateMutability: "view",
@@ -302,11 +345,11 @@ const _abi = [
     inputs: [
       {
         internalType: "uint256",
-        name: "tokenId",
+        name: "",
         type: "uint256",
       },
     ],
-    name: "tokenURI",
+    name: "uri",
     outputs: [
       {
         internalType: "string",
@@ -315,42 +358,19 @@ const _abi = [
       },
     ],
     stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "from",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "to",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "tokenId",
-        type: "uint256",
-      },
-    ],
-    name: "transferFrom",
-    outputs: [],
-    stateMutability: "nonpayable",
     type: "function",
   },
 ];
 
-export class ERC721URIStorage__factory {
+export class ERC1155Supply__factory {
   static readonly abi = _abi;
-  static createInterface(): ERC721URIStorageInterface {
-    return new utils.Interface(_abi) as ERC721URIStorageInterface;
+  static createInterface(): ERC1155SupplyInterface {
+    return new utils.Interface(_abi) as ERC1155SupplyInterface;
   }
   static connect(
     address: string,
     signerOrProvider: Signer | Provider
-  ): ERC721URIStorage {
-    return new Contract(address, _abi, signerOrProvider) as ERC721URIStorage;
+  ): ERC1155Supply {
+    return new Contract(address, _abi, signerOrProvider) as ERC1155Supply;
   }
 }
