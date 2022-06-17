@@ -7,8 +7,8 @@ import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Supply.sol";
 import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155URIStorage.sol";
 
 
-// CryptoBuddiesAccessoriesOfficial is an ERC1155 contract that contains Crypto Buddies Accessories Official.
-contract CryptoBuddiesAccessoriesOfficial is Ownable, ERC1155Supply, ERC1155URIStorage, ERC1155PresetMinterPauser {
+// AccessoriesCommunity is an ERC1155 contract that contains Crypto Buddies Accessories made by community.
+contract AccessoriesCommunity is Ownable, ERC1155Supply, ERC1155URIStorage, ERC1155PresetMinterPauser {
     // Contract name
     string public name;
     
@@ -16,8 +16,8 @@ contract CryptoBuddiesAccessoriesOfficial is Ownable, ERC1155Supply, ERC1155URIS
     string public symbol;
     
     constructor(string memory _uri) ERC1155PresetMinterPauser(_uri) {
-        name = "Crypto Buddies Accessories Official";
-        symbol = "CBAO1";
+        name = "Crypto Buddies Accessories: Community Edition";
+        symbol = "CBAC1";
     }
 
     function uri(uint256 tokenId) public view override(ERC1155, ERC1155URIStorage) returns (string memory) {
