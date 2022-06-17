@@ -105,13 +105,21 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IERC165__factory>;
     getContractFactory(
-      name: "CryptoBuddiesAccessoriesOfficial",
+      name: "AccessoriesCommunity",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.CryptoBuddiesAccessoriesOfficial__factory>;
+    ): Promise<Contracts.AccessoriesCommunity__factory>;
     getContractFactory(
-      name: "CryptoBuddiesMembership",
+      name: "AccessoriesOfficial",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.CryptoBuddiesMembership__factory>;
+    ): Promise<Contracts.AccessoriesOfficial__factory>;
+    getContractFactory(
+      name: "CryptoBuddies",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.CryptoBuddies__factory>;
+    getContractFactory(
+      name: "Membership",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.Membership__factory>;
 
     getContractAt(
       name: "AccessControl",
@@ -229,15 +237,25 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.IERC165>;
     getContractAt(
-      name: "CryptoBuddiesAccessoriesOfficial",
+      name: "AccessoriesCommunity",
       address: string,
       signer?: ethers.Signer
-    ): Promise<Contracts.CryptoBuddiesAccessoriesOfficial>;
+    ): Promise<Contracts.AccessoriesCommunity>;
     getContractAt(
-      name: "CryptoBuddiesMembership",
+      name: "AccessoriesOfficial",
       address: string,
       signer?: ethers.Signer
-    ): Promise<Contracts.CryptoBuddiesMembership>;
+    ): Promise<Contracts.AccessoriesOfficial>;
+    getContractAt(
+      name: "CryptoBuddies",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.CryptoBuddies>;
+    getContractAt(
+      name: "Membership",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.Membership>;
 
     // default types
     getContractFactory(

@@ -2,28 +2,26 @@ import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import { expect } from "chai";
 import { Contract, ContractFactory } from "ethers";
 import { ethers } from "hardhat";
-import { CryptoBuddiesMembership } from "../typechain-types";
+import { Membership } from "../typechain-types";
 
-describe("CryptoBuddiesMembership", function () {
+describe("Membership", function () {
   let owner: SignerWithAddress,
     addr1: SignerWithAddress,
     addr2: SignerWithAddress;
 
-  let CryptoBuddiesMembershipFactory: ContractFactory;
-  let cbm: CryptoBuddiesMembership;
+  let MembershipFactory: ContractFactory;
+  let cbm: Membership;
 
   beforeEach(async () => {
     [owner, addr1, addr2] = await ethers.getSigners();
 
-    CryptoBuddiesMembershipFactory = await ethers.getContractFactory(
-      "CryptoBuddiesMembership"
-    );
+    MembershipFactory = await ethers.getContractFactory("Membership");
 
-    cbm = (await CryptoBuddiesMembershipFactory.deploy(
+    cbm = (await MembershipFactory.deploy(
       100,
       addr1.address,
       "https://example.com/img/test.json"
-    )) as CryptoBuddiesMembership;
+    )) as Membership;
 
     await cbm.deployed();
   });
