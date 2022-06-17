@@ -52,7 +52,11 @@ export type { ERC165 } from "./@openzeppelin/contracts/utils/introspection/ERC16
 export { ERC165__factory } from "./factories/@openzeppelin/contracts/utils/introspection/ERC165__factory";
 export type { IERC165 } from "./@openzeppelin/contracts/utils/introspection/IERC165";
 export { IERC165__factory } from "./factories/@openzeppelin/contracts/utils/introspection/IERC165__factory";
-export type { CryptoBuddiesAccessoriesOfficial } from "./contracts/CryptoBuddiesAccessoriesOfficial";
-export { CryptoBuddiesAccessoriesOfficial__factory } from "./factories/contracts/CryptoBuddiesAccessoriesOfficial__factory";
-export type { CryptoBuddiesMembership } from "./contracts/CryptoBuddiesMembership";
-export { CryptoBuddiesMembership__factory } from "./factories/contracts/CryptoBuddiesMembership__factory";
+export type { AccessoriesCommunity } from "./contracts/AccessoriesCommunity";
+export { AccessoriesCommunity__factory } from "./factories/contracts/AccessoriesCommunity__factory";
+export type { AccessoriesOfficial } from "./contracts/AccessoriesOfficial";
+export { AccessoriesOfficial__factory } from "./factories/contracts/AccessoriesOfficial__factory";
+export type { CryptoBuddies } from "./contracts/CryptoBuddies";
+export { CryptoBuddies__factory } from "./factories/contracts/CryptoBuddies__factory";
+export type { Membership } from "./contracts/Membership";
+export { Membership__factory } from "./factories/contracts/Membership__factory";

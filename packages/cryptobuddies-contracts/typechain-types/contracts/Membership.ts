@@ -26,7 +26,7 @@ import type {
   OnEvent,
 } from "../common";
 
-export interface CryptoBuddiesMembershipInterface extends utils.Interface {
+export interface MembershipInterface extends utils.Interface {
   functions: {
     "approve(address,uint256)": FunctionFragment;
     "balanceOf(address)": FunctionFragment;
@@ -298,12 +298,12 @@ export type UnpausedEvent = TypedEvent<[string], UnpausedEventObject>;
 
 export type UnpausedEventFilter = TypedEventFilter<UnpausedEvent>;
 
-export interface CryptoBuddiesMembership extends BaseContract {
+export interface Membership extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
 
-  interface: CryptoBuddiesMembershipInterface;
+  interface: MembershipInterface;
 
   queryFilter<TEvent extends TypedEvent>(
     event: TypedEventFilter<TEvent>,

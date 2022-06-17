@@ -26,8 +26,7 @@ import type {
   OnEvent,
 } from "../common";
 
-export interface CryptoBuddiesAccessoriesOfficialInterface
-  extends utils.Interface {
+export interface AccessoriesCommunityInterface extends utils.Interface {
   functions: {
     "DEFAULT_ADMIN_ROLE()": FunctionFragment;
     "MINTER_ROLE()": FunctionFragment;
@@ -441,12 +440,12 @@ export type UnpausedEvent = TypedEvent<[string], UnpausedEventObject>;
 
 export type UnpausedEventFilter = TypedEventFilter<UnpausedEvent>;
 
-export interface CryptoBuddiesAccessoriesOfficial extends BaseContract {
+export interface AccessoriesCommunity extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
 
-  interface: CryptoBuddiesAccessoriesOfficialInterface;
+  interface: AccessoriesCommunityInterface;
 
   queryFilter<TEvent extends TypedEvent>(
     event: TypedEventFilter<TEvent>,
