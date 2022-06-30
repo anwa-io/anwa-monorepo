@@ -1,5 +1,5 @@
 {
-  "name": "cryptobuddies-contracts",
+  "name": "@anwa-monorepo/cryptobuddies-contracts",
   "version": "1.0.0",
   "description": "Crypto Buddies Contracts",
   "main": "index.js",
