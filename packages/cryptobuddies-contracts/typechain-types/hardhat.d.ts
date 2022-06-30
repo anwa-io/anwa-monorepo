@@ -117,6 +117,22 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.CryptoBuddies__factory>;
     getContractFactory(
+      name: "EncodeDecodeUtil",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.EncodeDecodeUtil__factory>;
+    getContractFactory(
+      name: "IMinterBurner",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IMinterBurner__factory>;
+    getContractFactory(
+      name: "IPacker",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IPacker__factory>;
+    getContractFactory(
+      name: "Manager",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.Manager__factory>;
+    getContractFactory(
       name: "Membership",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Membership__factory>;
@@ -251,6 +267,26 @@ declare module "hardhat/types/runtime" {
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.CryptoBuddies>;
+    getContractAt(
+      name: "EncodeDecodeUtil",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.EncodeDecodeUtil>;
+    getContractAt(
+      name: "IMinterBurner",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IMinterBurner>;
+    getContractAt(
+      name: "IPacker",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IPacker>;
+    getContractAt(
+      name: "Manager",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.Manager>;
     getContractAt(
       name: "Membership",
       address: string,
